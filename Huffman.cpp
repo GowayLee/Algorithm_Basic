@@ -1,9 +1,9 @@
 #include <iostream>
-#include <algorithm>
 #include <string>
 #include <queue>
 #include <map>
 #include <vector>
+
 using namespace std;
 
 class HuffmanTreeNode
@@ -29,7 +29,7 @@ struct Compare
     }
 };
 
-void printCodes(HuffmanTreeNode *root, string str, map<char, string> &huffmanCodes) // BFS
+void printCodes(HuffmanTreeNode *root, string str, map<char, string> &huffmanCodes) // DFS
 {
     if (root == NULL)
         return;
