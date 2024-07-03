@@ -29,16 +29,12 @@ struct Compare
     }
 };
 
-void printCodes(HuffmanTreeNode *root, string str, map<char, string> &huffmanCodes)
+void printCodes(HuffmanTreeNode *root, string str, map<char, string> &huffmanCodes) // BFS
 {
     if (root == NULL)
-    {
         return;
-    }
     if (root->ch != '$')
-    {
         huffmanCodes[root->ch] = str;
-    }
     printCodes(root->left, str + "0", huffmanCodes);
     printCodes(root->right, str + "1", huffmanCodes);
 }
@@ -48,7 +44,7 @@ int main()
     string s;
     getline(cin, s);
     map<char, int> freq;
-    
+
     for (int i = 0; i < s.length(); i++) // count frequency of each character
     {
         freq[s[i]]++;
@@ -59,7 +55,8 @@ int main()
     {
         minHeap.push(new HuffmanTreeNode(pair.first, pair.second));
     }
-    while (minHeap.size() != 1)
+
+    while (minHeap.size() != 1) // generate Huffman Tree
     {
         HuffmanTreeNode *left = minHeap.top();
         minHeap.pop();
@@ -75,7 +72,7 @@ int main()
     {
         cout << pair.first << " " << pair.second << endl;
     }
-    
+
     system("pause");
     return 0;
 }
